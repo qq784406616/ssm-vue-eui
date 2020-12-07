@@ -11,6 +11,7 @@
     <module>ssm-vue-eui-dao</module>
     <module>ssm-vue-eui-service</module>
     <module>ssm-vue-eui-web</module>
+    <module>ssm-vue-eui-web</module>
   </modules>
   <packaging>pom</packaging>
 

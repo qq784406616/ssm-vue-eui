@@ -11,5 +11,8 @@
         <module name="ssm-vue-eui-dao" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ssm-vue-eui-web1" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
