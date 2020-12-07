@@ -1,0 +1,5 @@
+# Project exclude paths
+/ssm-vue-eui-dao/target/
+/ssm-vue-eui-service/target/
+/ssm-vue-eui-web/target/
+/target/
