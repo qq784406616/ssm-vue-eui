@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnguigu.dao.MenuDao">
+
+	<resultMap id="menumap" type="menu">
+		<id column="id" property="id"></id>
+		<result column="name" property="name"></result>
+		<result column="menucode" property="menuCode"></result>
+		<result column="parentid" property="parentId"></result>
+		<result column="nodetype" property="nodeType"></result>
+		<result column="iconurl" property="iconUrl"></result>
+		<result column="sort" property="sort"></result>
+		<result column="linkurl" property="linkUrl"></result>
+		<result column="level" property="level"></result>
+		<result column="path" property="path"></result>
+		<result column="isdelete" property="isdelete"></result>
+	</resultMap>
+
+
+	<select id="queryMenu" parameterType="Menu" resultType="Menu">
+		select * from menu
+		<where>
+			<if test="name!=null"> and name like  concat('%',#{name},'%')</if>
+		</where>
+	</select>
+
+
+	<select id="querycountMenu" parameterType="Menu" resultType="int">
+		select count(*) from menu
+		<where>
+			<if test="name!=null"> and name like  concat('%',#{name},'%')</if>
+		</where>
+	</select>
+
+	<insert id="addMenu" parameterType="Menu">
+		insert into menu values(null,#{name},#{menucode},#{parentId},#{nodeType},#{iconurl},#{sort},#{linkUrl},#{level},#{path},default )
+	</insert>
+
+	<update id="updateMenu" parameterType="Menu">
+        update menu set name=#{name},menucode=#{menucode},parentId=#{parentId},
+        nodeType=#{nodeType},iconurl=#{iconurl},sort=#{sort},linkUrl=#{linkUrl},
+        level=#{level},path=#{path}
+        where menuid =#{menuid}
+    </update>
+
+	<delete id="deleteMenu" parameterType="int">
+        delete from menu where menuid =#{menuid}
+    </delete>
+
+	<select id="queryById" parameterType="int" resultType="Menu">
+		select * from menu where menuid=#{menuid}
+	</select>
+
+
+</mapper>

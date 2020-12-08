@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnguigu.dao.StaffDao">
+
+
+	<select id="queryStaff" parameterType="Staff" resultType="Staff">
+		select * from staff
+		<where>
+			<if test="staffname!=null"> and staffname like concat('%',#{staffname},'%') </if>
+		</where>
+	</select>
+
+
+	<select id="querycountStaff" parameterType="Staff"  resultType="int">
+		select count(*) from staff
+		<where>
+			<if test="staffname!=null"> and staffname like concat('%',#{staffname},'%') </if>
+		</where>
+	</select>
+
+
+	<select id="queryById" parameterType="int" resultType="Staff" >
+        select * from staff where staffid=#{staffid}
+    </select>
+
+	<insert id="addStaff" parameterType="Staff">
+		insert into staff values(null,#{staffname},#{staffaccount},#{staffpwd},null)
+	</insert>
+
+	<update id="updateStaff" parameterType="Staff">
+        update staff set staffname=#{staffname},staffaccount=#{staffaccount},staffpwd=#{staffpwd}
+        where staffid =#{staffid}
+    </update>
+
+	<delete id="deleteStaff" parameterType="int">
+        delete from staff where staffid =#{staffid}
+    </delete>
+
+
+
+</mapper>
