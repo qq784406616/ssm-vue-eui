@@ -39,7 +39,7 @@
         根据指定的包 把mapper找出来，创建对象
         -->
         <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-                <property name="basePackage" value="com.hnguiigu.dao"></property>
+                <property name="basePackage" value="com.hnguigu.dao"></property>
         </bean>
 
 </beans>
